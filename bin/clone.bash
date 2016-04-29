@@ -1,20 +1,22 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-  git clone "https://github.com/lane-webperformance/legion.git" &&
-  git clone "https://github.com/lane-webperformance/legion-io.git" &&
-  git clone "https://github.com/lane-webperformance/legion-instrument.git" &&
-  git clone "https://github.com/lane-webperformance/legion-metrics.git" &&
-  git clone "https://github.com/lane-webperformance/legion-io-fetch.git" &&
-  exit 0
+# export LEGION_ROOT to point at your github fork or whatever you're working from
+LEGION_ROOT="${LEGION_ROOT:-https://github.com/lane-webperformance}"
 
-  exit 1
+if [ -z "$1" ]; then
+  git clone "$LEGION_ROOT/legion.git"
+  git clone "$LEGION_ROOT/legion-io.git"
+  git clone "$LEGION_ROOT/legion-instrument.git"
+  git clone "$LEGION_ROOT/legion-metrics.git"
+  git clone "$LEGION_ROOT/legion-io-fetch.git"
+
+  exit 0
 fi
 
 if [ -d "$1" ]; then
   echo "$1 already exists." && exit 0
 else
-  git clone "https://github.com/lane-webperformance/$1.git" && exit 0
+  git clone "$LEGION_ROOT/$1.git" && exit 0
 fi
 
 exit 1
