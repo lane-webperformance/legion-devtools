@@ -1,11 +1,10 @@
 
 Various scripts to help with software development.
 
-./bin/clone.bash [legion-repo]
+./bin/clone.bash [REPO]
 =================
 
-git clones legion-repo.git, or all of the base legion libraries if no parameter
-is provided.
+git clones REPO.git, or all of the legion libraries if no parameter is provided.
 
 ./bin/build.bash
 ==========
@@ -16,6 +15,12 @@ Build all npm-packaged software in the current working directory.
 ==========
 
 npm run clean all npm-packaged software in the current working directory.
+
+./bin/forall.bash
+=================
+
+Run a command in each direct subdirectory that contains npm-packaged software.
+(Direct means that we don't recursively dig into nested subdirectories.)
 
 ./bin/trash-all.bash
 ====================
